@@ -46,8 +46,8 @@ name: 'Terraform_holiday'
 
 on:
   push:
-    branches: [ "main" ]
-    paths: ["blueprint/flows/holiday_flow"]
+    paths:
+      - 'blueprint/flow/holiday_flow/**'
   pull_request:
 
 permissions:
