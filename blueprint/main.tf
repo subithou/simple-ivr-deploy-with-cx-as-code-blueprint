@@ -106,9 +106,9 @@ resource "genesyscloud_flow" "mysimpleflow1" {
   filepath = "./Customer support with CRM Script_v1-0.yaml"
   file_content_hash = filesha256("./Customer support with CRM Script_v1-0.yaml") 
 }
-resource "genesyscloud_flow" "mysimpleflow2" {
-  filepath = "./ivr_implementation2_v2-0.yaml"
-  file_content_hash = filesha256("./ivr_implementation2_v2-0.yaml") 
+resource "genesyscloud_flow" "mysimpleflow3" {
+  filepath = "./ivr_implementation3_v2-0.yaml"
+  file_content_hash = filesha256("./ivr_implementation3_v2-0.yaml") 
 }
 
 
