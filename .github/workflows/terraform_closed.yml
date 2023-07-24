@@ -42,11 +42,16 @@
 #       with:
 #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-name: 'Terraform'
+name: 'Terraform_closed'
 
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
 on:
   push:
-    branches: [ "main" ]
+    paths:
+      - 'blueprint/flows/closed_flow/**'
   pull_request:
 
 permissions:
