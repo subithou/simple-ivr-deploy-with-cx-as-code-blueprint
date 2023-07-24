@@ -46,7 +46,12 @@ name: 'Terraform'
 
 on:
   push:
-    branches: [ "main" ]
+    # branches: [ "main" ]
+    branches:
+    - main
+    paths:
+    - blueprint/flows/closed_flow
+
   pull_request:
 
 permissions:
