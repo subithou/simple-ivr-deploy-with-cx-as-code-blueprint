@@ -50,7 +50,7 @@ on:
     branches:
     - main
     paths:
-    - blueprint/flows/closed_flow
+    - 'blueprint/flows/closed_flow'
 
   pull_request:
 
