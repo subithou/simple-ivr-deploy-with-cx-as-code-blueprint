@@ -100,9 +100,8 @@ jobs:
 #         terraform apply --auto-approve
 #         cd $GITHUB_WORKSPACE
 #       shell: bash
-
+#  if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
     - name: Terraform Apply
-      if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: |
             cd $GITHUB_WORKSPACE/blueprint/genesys-cloud-cx-as-code
             terraform init 
