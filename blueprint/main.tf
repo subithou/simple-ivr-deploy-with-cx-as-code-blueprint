@@ -111,6 +111,11 @@ resource "genesyscloud_flow" "mysimpleflow3" {
   file_content_hash = filesha256("./ivr_implementation3_v2-0.yaml") 
 }
 
+resource "genesyscloud_flow" "mysimpleflow4" {
+  filepath = "./Holiday2.yaml"
+  file_content_hash = filesha256("./Holiday2.yaml") 
+}
+
 
 resource "genesyscloud_telephony_providers_edges_did_pool" "mygcv_number" {
   start_phone_number = "+19205422729"
