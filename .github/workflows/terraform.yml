@@ -104,6 +104,7 @@ jobs:
 # cd $GITHUB_WORKSPACE/simple-ivr-deploy-with-cx-as-code-blueprint/blueprint
     - name: Terraform Apply
       run: |
+            cd blueprint
             terraform init 
             terraform apply --auto-approve
             cd $GITHUB_WORKSPACE
