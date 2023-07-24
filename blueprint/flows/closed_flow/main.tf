@@ -14,7 +14,7 @@ provider "genesyscloud" {
 
 
 
-resource "genesyscloud_flow" "mysimpleflow1" {
+resource "genesyscloud_flow" "mysimpleflow2" {
   filepath = "./Closed Hours5.yaml"
   file_content_hash = filesha256("./Closed Hours5.yaml") 
 }
