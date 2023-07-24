@@ -103,13 +103,10 @@ jobs:
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
-      runs:
-        using: "composite"
-        steps:
-          - run: |
-              cd $GITHUB_WORKSPACE/blueprint/genesys-cloud-cx-as-code
-              terraform init 
-              terraform apply --auto-approve
-              cd $GITHUB_WORKSPACE
-            shell: bash
+      run: |
+            cd $GITHUB_WORKSPACE/blueprint/genesys-cloud-cx-as-code
+            terraform init 
+            terraform apply --auto-approve
+            cd $GITHUB_WORKSPACE
+      shell: bash
         
