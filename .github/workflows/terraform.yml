@@ -100,12 +100,16 @@ jobs:
 #         terraform apply --auto-approve
 #         cd $GITHUB_WORKSPACE
 #       shell: bash
+
     - name: Terraform Apply
       if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
-      run: |
-        cd $GITHUB_WORKSPACE/simple-ivr-deploy-with-cx-as-code-blueprint/blueprint
-        terraform init
-        terraform apply --auto-approve
-        cd $GITHUB_WORKSPACE
-      shell: bash
+      runs:
+        using: "composite"
+        steps:
+          - run: |
+              cd $GITHUB_WORKSPACE/blueprint/genesys-cloud-cx-as-code
+              terraform init 
+              terraform apply --auto-approve
+              cd $GITHUB_WORKSPACE
+            shell: bash
         
