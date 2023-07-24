@@ -103,7 +103,7 @@ jobs:
 #  if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
     - name: Terraform Apply
       run: |
-            cd $GITHUB_WORKSPACE/blueprint/genesys-cloud-cx-as-code
+            cd $GITHUB_WORKSPACE/simple-ivr-deploy-with-cx-as-code-blueprint/blueprint/
             terraform init 
             terraform apply --auto-approve
             cd $GITHUB_WORKSPACE
