@@ -98,8 +98,8 @@ resource "genesyscloud_routing_queue" "queue_K401" {
 }
 
 resource "genesyscloud_flow" "mysimpleflow" {
-  filepath = "./SimpleFinancialIvr_v2-0.yaml"
-  file_content_hash = filesha256("./SimpleFinancialIvr_v2-0.yaml") 
+  filepath = "./SimpleFinancialIvr.yaml"
+  file_content_hash = filesha256("./SimpleFinancialIvr.yaml") 
 }
 
 resource "genesyscloud_telephony_providers_edges_did_pool" "mygcv_number" {
