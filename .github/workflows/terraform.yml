@@ -103,8 +103,9 @@ jobs:
 #  if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
 # cd $GITHUB_WORKSPACE/simple-ivr-deploy-with-cx-as-code-blueprint/blueprint
     - name: Terraform Apply
+      if: github.ref == 'refs/heads/"main"/"blueprint"/"flows"/"closed_flow"' && github.event_name == 'push'
       run: |
-            cd blueprint
+            cd blueprint/flows/closed_flow
             terraform init 
             terraform apply --auto-approve
             cd $GITHUB_WORKSPACE
