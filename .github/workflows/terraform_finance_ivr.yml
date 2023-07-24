@@ -109,7 +109,7 @@ jobs:
       run: |
           cd blueprint/flows/finance_ivr
           terraform init 
-          terraform apply
+          terraform apply --auto-approve
           cd $GITHUB_WORKSPACE
       shell: bash
         
