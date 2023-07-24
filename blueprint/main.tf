@@ -7,8 +7,11 @@ terraform {
 }
 
 provider "genesyscloud" {
-  sdk_debug = true
+  oauthclient_id = "aae02681-f58f-4186-9f0b-200ef4a6e1e9"
+  oauthclient_secret = "RgeRJaE9DLCNpYIaI07nIR-wHZZoCh4fQYaOXOE8JAw"
+  aws_region = "us-east-1"
 }
+
 
 resource "genesyscloud_user" "sf_johnsmith" {
   email           = "john.smith@simplefinancial.com"
@@ -21,7 +24,7 @@ resource "genesyscloud_user" "sf_johnsmith" {
   addresses {
 
     phone_numbers {
-      number     = "9205551212"
+      number     = "+19205551212"
       media_type = "PHONE"
       type       = "MOBILE"
     }
@@ -45,7 +48,7 @@ resource "genesyscloud_user" "sf_janesmith" {
   addresses {
 
     phone_numbers {
-      number     = "9205551212"
+      number     = "+19205551212"
       media_type = "PHONE"
       type       = "MOBILE"
     }
@@ -97,6 +100,11 @@ resource "genesyscloud_routing_queue" "queue_K401" {
 resource "genesyscloud_flow" "mysimpleflow" {
   filepath = "./SimpleFinancialIvr_v2-0.yaml"
   file_content_hash = filesha256("./SimpleFinancialIvr_v2-0.yaml") 
+}
+
+resource "genesyscloud_flow" "mysimpleflow1" {
+  filepath = "./Customer support with CRM Script_v1-0.yaml"
+  file_content_hash = filesha256("./Customer support with CRM Script_v1-0.yaml") 
 }
 
 
