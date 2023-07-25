@@ -7,8 +7,8 @@ terraform {
 }
 
 provider "genesyscloud" {
-  oauthclient_id = "aae02681-f58f-4186-9f0b-200ef4a6e1e9"
-  oauthclient_secret = "RgeRJaE9DLCNpYIaI07nIR-wHZZoCh4fQYaOXOE8JAw"
+  oauthclient_id = "94a34097-24d0-4ba9-b6aa-66afa52870c1"
+  oauthclient_secret = "Vy62YXuW8NFM8bMxeVhDR5dzgv_XOiad2_nu2PPkC5Q"
   aws_region = "us-east-1"
 }
 
