@@ -63,6 +63,7 @@ resource "genesyscloud_user" "sf_janesmith" {
 }
 
 
+
 resource "genesyscloud_routing_queue" "queue_ira" {
   name                     = "Simple Financial IRA queue"
   description              = "Simple Financial IRA questions and answers"
