@@ -12,6 +12,7 @@ provider "genesyscloud" {
   aws_region = "us-east-1"
 }
 
+terraform state rm
 resource "genesyscloud_user" "sf_johnsmith" {
   email           = "john.smith@simplefinancial.com"
   name            = "John Smith"
@@ -36,6 +37,7 @@ resource "genesyscloud_user" "sf_johnsmith" {
   }
 }
 
+terraform state rm
 resource "genesyscloud_user" "sf_janesmith" {
   email           = "jane.smith@simplefinancial.com"
   name            = "Jane Smith"
@@ -60,6 +62,7 @@ resource "genesyscloud_user" "sf_janesmith" {
   }
 }
 
+terraform state rm
 resource "genesyscloud_routing_queue" "queue_ira" {
   name                     = "Simple Financial IRA queue"
   description              = "Simple Financial IRA questions and answers"
@@ -76,6 +79,7 @@ resource "genesyscloud_routing_queue" "queue_ira" {
   }
 }
 
+terraform state rm
 resource "genesyscloud_routing_queue" "queue_K401" {
   name                     = "Simple Financial 401K queue"
   description              = "Simple Financial 401K questions and answers"
@@ -96,12 +100,13 @@ resource "genesyscloud_routing_queue" "queue_K401" {
   }
 }
 
+terraform state rm
 resource "genesyscloud_flow" "mysimpleflow" {
   filepath = "./SimpleFinancialIvr.yaml"
   file_content_hash = filesha256("./SimpleFinancialIvr.yaml") 
 }
 
-
+terraform state rm
 resource "genesyscloud_telephony_providers_edges_did_pool" "mygcv_number" {
   start_phone_number = "+19205422729"
   end_phone_number   = "+19205422729"
@@ -109,6 +114,7 @@ resource "genesyscloud_telephony_providers_edges_did_pool" "mygcv_number" {
   comments           = "Additional comments"
 }
 
+terraform state rm
 resource "genesyscloud_architect_ivr" "mysimple_ivr" {
   name               = "A simple IVR"
   description        = "A sample IVR configuration"
