@@ -17,62 +17,49 @@ sort_order = 'ASC' # str | Ascending or descending sort order (optional) (defaul
 # integration_presence_source = 'integration_presence_source_example' # str | Gets an integration presence for users instead of their defaults. This parameter will only be used when presence is provided as an \"expand\". When using this parameter the maximum number of users that can be returned is 100. (optional)
 state = 'active' # str | Only list users of this state (optional) (default to 'active')
 
-try:
-    # Get the list of available users.
-    api_response = api_instance.get_users(page_size=page_size, page_number=page_number, sort_order=sort_order, state=state)
-    print(api_response)
-except ApiException as e:
-    print("Exception when calling UsersApi->get_users: %s\n" % e)
+# try:
+#     # Get the list of available users.
+#     api_response = api_instance.get_users(page_size=page_size, page_number=page_number, sort_order=sort_order, state=state)
+#     print(api_response)
+# except ApiException as e:
+#     print("Exception when calling UsersApi->get_users: %s\n" % e)
 
+routingApi = PureCloudPlatformClientV2.RoutingApi(apiClient)
+integrationsApi = PureCloudPlatformClientV2.IntegrationsApi(apiClient)
 
+def findQueue(queueName):
+  results = routingApi.get_routing_queues(name=queueName)
 
-# CLIENT_ID = os.environ["GENESYSCLOUD_OAUTHCLIENT_ID"]
-# CLIENT_SECRET = os.environ["GENESYSCLOUD_OAUTHCLIENT_SECRET"]
-# CLIENT_REGION = os.environ["GENESYSCLOUD_REGION"]
-# CLIENT_API_REGION = os.environ["GENESYSCLOUD_API_REGION"]
+  if len(results.entities)==1:
+    return results.entities[0]
+  else: 
+    return None
 
-# PureCloudPlatformClientV2.configuration.host = 	CLIENT_API_REGION
-# apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token(CLIENT_ID, CLIENT_SECRET)
-# routingApi = PureCloudPlatformClientV2.RoutingApi(apiClient)
-# integrationsApi = PureCloudPlatformClientV2.IntegrationsApi(apiClient)
+def findIntegrationAction(actionName):
+  results = integrationsApi.get_integrations_actions(name=actionName)
 
-# def findQueue(queueName):
-#   results = routingApi.get_routing_queues(name=queueName)
+  if len(results.entities)==1:
+    return results.entities[0]
+  else: 
+    return None    
 
-#   if len(results.entities)==1:
-#     return results.entities[0]
-#   else: 
-#     return None
+def checkQueues():
+  Simple_Financial_IRA_queue = findQueue("Simple Financial IRA queue")
+  Simple_Financial_401K_queue = findQueue("Simple Financial 401K queue") 
 
-# def findIntegrationAction(actionName):
-#   results = integrationsApi.get_integrations_actions(name=actionName)
-
-#   if len(results.entities)==1:
-#     return results.entities[0]
-#   else: 
-#     return None    
-
-# def checkQueues():
-#   ira = findQueue("IRA")
-#   K401 = findQueue("401K") 
-#   CS529 = findQueue("529") 
-#   GS    = findQueue("GeneralSupport")   
   
-#   assert not(ira is None)
-#   assert not(K401 is None)
-#   assert not(CS529 is None)
-#   assert not(GS is None)
+  assert not(Simple_Financial_IRA_queue is None)
+  assert not( Simple_Financial_401K_queue is None)
   
-#   assert (ira.name=="IRA")==True,   "Retrieved IRA queue name does not match"
-#   assert (K401.name=="401K")==True, "Retrieved 401K queue name does not match"
-#   assert (CS529.name=="529")==True, "Retrieved 529 queue name does not match"
-#   assert (GS.name=="GeneralSupport")==True, "Retrieved IRA queue name does not match"  
+  # Retrieved queue name does not match
+  assert (Simple_Financial_IRA_queue.name=="Simple Financial IRA queue")==True,   
+  assert ( Simple_Financial_401K_queue.name=="Simple Financial 401K queue")==True, 
 
 # def checkIntegrationAction():
 #   comprehendDataAction = findIntegrationAction("LookupQueueName")  
 
 #   assert not(comprehendDataAction is None)
 
-# #adding check
-# checkQueues()
+#adding check
+checkQueues()
 # checkIntegrationAction()
