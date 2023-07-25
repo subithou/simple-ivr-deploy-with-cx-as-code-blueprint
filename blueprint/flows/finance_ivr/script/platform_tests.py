@@ -52,8 +52,8 @@ def checkQueues():
   assert not( Simple_Financial_401K_queue is None)
   
   # Retrieved queue name does not match
-  assert (Simple_Financial_IRA_queue.name=="Simple Financial IRA queue")==True,   
-  assert ( Simple_Financial_401K_queue.name=="Simple Financial 401K queue")==True, 
+  assert (Simple_Financial_IRA_queue.name=="Simple Financial IRA queue")==True, "Retrieved queue name does not match"
+  assert ( Simple_Financial_401K_queue.name=="Simple Financial 401K queue")==True, "Retrieved IRA queue name does not match"
 
 # def checkIntegrationAction():
 #   comprehendDataAction = findIntegrationAction("LookupQueueName")  
