@@ -4,9 +4,9 @@ import os
 import time
 import PureCloudPlatformClientV2
 
-api_client = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token('682b4a94-5e61-4219-b399-e52764c8da30','9c7Op9xuqC2NXlgUfXywP5YyClYzEbhu_FChShRQOtY')
+apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token('682b4a94-5e61-4219-b399-e52764c8da30','9c7Op9xuqC2NXlgUfXywP5YyClYzEbhu_FChShRQOtY')
 
-api_instance = PureCloudPlatformClientV2.UsersApi(api_client);
+api_instance = PureCloudPlatformClientV2.UsersApi(apiClient);
 
 page_size = 25 # int | Page size (optional) (default to 25)
 page_number = 1 # int | Page number (optional) (default to 1)
