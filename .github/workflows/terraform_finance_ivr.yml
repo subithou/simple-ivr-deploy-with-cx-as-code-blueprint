@@ -54,8 +54,24 @@ permissions:
   contents: read
 
 jobs:
+
+  execute-platform-tests:
+    runs-on: ubuntu-latest
+    # env:
+    #   GENESYSCLOUD_OAUTHCLIENT_ID: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_ID_DEV }}
+    #   GENESYSCLOUD_OAUTHCLIENT_SECRET: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_SECRET_DEV }}
+    #   GENESYSCLOUD_REGION: "us-west-2"
+    #   GENESYSCLOUD_API_REGION: "https://api.usw2.pure.cloud"
+    steps:
+      - uses: actions/checkout@v3
+      # - uses: ./.github/actions/genesys-cloud-dev-tools
+      - name: Platform tests
+        run: python blueprint/scripts/platform_tests.py
+
+
   terraform:
     name: 'Terraform'
+    needs: execute-platform-tests
     runs-on: ubuntu-latest
     environment: production
 
@@ -104,6 +120,8 @@ jobs:
 #  if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
 # cd $GITHUB_WORKSPACE/simple-ivr-deploy-with-cx-as-code-blueprint/blueprint
 # if: github.ref == 'refs/heads/"main"/"blueprint"/"flows"/"closed_flow"' && github.event_name == 'push'
+
+  
 
     - name: Terraform Apply
       run: |
