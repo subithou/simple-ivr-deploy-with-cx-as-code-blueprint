@@ -13,6 +13,7 @@ provider "genesyscloud" {
 }
 
 
+
 resource "genesyscloud_user" "sf_johnsmith" {
   email           = "john.smith@simplefinancial.com"
   name            = "John Smith"
@@ -115,6 +116,7 @@ resource "genesyscloud_telephony_providers_edges_did_pool" "mygcv_number" {
   description        = "GCV Number for inbound calls"
   comments           = "Additional comments"
 }
+
 
 
 resource "genesyscloud_architect_ivr" "mysimple_ivr" {
