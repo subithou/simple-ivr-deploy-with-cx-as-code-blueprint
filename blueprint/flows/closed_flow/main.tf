@@ -13,12 +13,13 @@ provider "genesyscloud" {
 }
 
 resource "genesyscloud_tf_export" "export" {
-  directory =  "./export"
-  resource_types     = ["genesyscloud_routing_queue"]
-  include_state_file = false
-  log_permission_errors = true
+  directory          = "./export"
+  resource_types     = ["genesyscloud_user"]
+  include_state_file = true
   export_as_hcl = true
 }
+
+
 
 
 
