@@ -12,7 +12,6 @@ provider "genesyscloud" {
   aws_region = "us-east-1"
 }
 
-
 resource "genesyscloud_tf_export" "export" {
   directory =  "./export"
   resource_types     = ["genesyscloud_routing_queue"]
