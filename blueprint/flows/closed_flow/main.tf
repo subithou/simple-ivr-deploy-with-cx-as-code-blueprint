@@ -13,11 +13,15 @@ provider "genesyscloud" {
 }
 
 
-
-resource "genesyscloud_flow" "mysimpleflow3" {
-  filepath = "./Closed Hours6.yaml"
-  file_content_hash = filesha256("./Closed Hours6.yaml") 
+resource "genesyscloud_tf_export" "export" {
+  directory =  "./export"
+  resource_types     = ["genesyscloud_routing_queue"]
+  include_state_file = false
+  log_permission_errors = true
+  export_as_hcl = true
 }
+
+
 
 
 
