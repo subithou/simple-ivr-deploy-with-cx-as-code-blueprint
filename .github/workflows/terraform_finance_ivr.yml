@@ -58,11 +58,11 @@ jobs:
   execute-platform-tests:
     runs-on: ubuntu-latest
     environment: production
-    # env:
-    #   GENESYSCLOUD_OAUTHCLIENT_ID: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_ID_DEV }}
-    #   GENESYSCLOUD_OAUTHCLIENT_SECRET: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_SECRET_DEV }}
-    #   GENESYSCLOUD_REGION: "us-west-2"
-    #   GENESYSCLOUD_API_REGION: "https://api.usw2.pure.cloud"
+    env:
+      GENESYSCLOUD_OAUTHCLIENT_ID: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_ID }}
+      GENESYSCLOUD_OAUTHCLIENT_SECRET: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_SECRET }}
+      GENESYSCLOUD_REGION: "us-east-1"
+      # GENESYSCLOUD_API_REGION: "https://api.usw2.pure.cloud"
     steps:
       - uses: actions/checkout@v3
       # - uses: ./.github/actions/genesys-cloud-dev-tools
