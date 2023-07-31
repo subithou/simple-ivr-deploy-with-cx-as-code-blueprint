@@ -57,6 +57,7 @@ jobs:
 
   execute-platform-tests:
     runs-on: ubuntu-latest
+    environment: production
     # env:
     #   GENESYSCLOUD_OAUTHCLIENT_ID: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_ID_DEV }}
     #   GENESYSCLOUD_OAUTHCLIENT_SECRET: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_SECRET_DEV }}
