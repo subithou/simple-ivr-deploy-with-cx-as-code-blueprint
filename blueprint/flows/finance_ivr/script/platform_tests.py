@@ -4,6 +4,7 @@ import os
 import time
 import PureCloudPlatformClientV2
 
+
 CLIENT_ID = os.environ["GENESYSCLOUD_OAUTHCLIENT_ID"]
 CLIENT_SECRET = os.environ["GENESYSCLOUD_OAUTHCLIENT_SECRET"]
 # CLIENT_REGION = os.environ["GENESYSCLOUD_REGION"]
