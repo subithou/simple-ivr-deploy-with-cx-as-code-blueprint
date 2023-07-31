@@ -14,6 +14,7 @@ provider "genesyscloud" {
 
 
 
+
 resource "genesyscloud_user" "sf_johnsmith" {
   email           = "john.smith@simplefinancial.com"
   name            = "John Smith"
