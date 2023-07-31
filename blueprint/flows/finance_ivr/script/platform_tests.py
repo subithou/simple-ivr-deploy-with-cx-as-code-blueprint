@@ -4,16 +4,23 @@ import os
 import time
 import PureCloudPlatformClientV2
 
+import os
 
-CLIENT_ID = os.environ["GENESYSCLOUD_OAUTHCLIENT_ID"]
-CLIENT_SECRET = os.environ["GENESYSCLOUD_OAUTHCLIENT_SECRET"]
+for name, value in os.environ.items():
+    print("{0}: {1}".format(name, value))
+
+
+# CLIENT_ID = os.environ["GENESYSCLOUD_OAUTHCLIENT_ID"]
+# CLIENT_SECRET = os.environ["GENESYSCLOUD_OAUTHCLIENT_SECRET"]
+
 # CLIENT_REGION = os.environ["GENESYSCLOUD_REGION"]
 # CLIENT_API_REGION = os.environ["GENESYSCLOUD_API_REGION"]
 
 # PureCloudPlatformClientV2.configuration.host = 	CLIENT_API_REGION
-apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token(CLIENT_ID, CLIENT_SECRET)
-routingApi = PureCloudPlatformClientV2.RoutingApi(apiClient)
-integrationsApi = PureCloudPlatformClientV2.IntegrationsApi(apiClient)
+
+# apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token(CLIENT_ID, CLIENT_SECRET)
+# routingApi = PureCloudPlatformClientV2.RoutingApi(apiClient)
+# integrationsApi = PureCloudPlatformClientV2.IntegrationsApi(apiClient)
 
 
 # apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token('682b4a94-5e61-4219-b399-e52764c8da30','9c7Op9xuqC2NXlgUfXywP5YyClYzEbhu_FChShRQOtY')
@@ -36,8 +43,10 @@ state = 'active' # str | Only list users of this state (optional) (default to 'a
 # except ApiException as e:
 #     print("Exception when calling UsersApi->get_users: %s\n" % e)
 
-routingApi = PureCloudPlatformClientV2.RoutingApi(apiClient)
-integrationsApi = PureCloudPlatformClientV2.IntegrationsApi(apiClient)
+
+
+# routingApi = PureCloudPlatformClientV2.RoutingApi(apiClient)
+# integrationsApi = PureCloudPlatformClientV2.IntegrationsApi(apiClient)
 
 def findQueue(queueName):
   results = routingApi.get_routing_queues(name=queueName)
@@ -73,5 +82,5 @@ def checkQueues():
 #   assert not(comprehendDataAction is None)
 
 #adding check
-checkQueues()
+# checkQueues()
 # checkIntegrationAction()
