@@ -4,9 +4,20 @@ import os
 import time
 import PureCloudPlatformClientV2
 
-apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token('682b4a94-5e61-4219-b399-e52764c8da30','9c7Op9xuqC2NXlgUfXywP5YyClYzEbhu_FChShRQOtY')
+CLIENT_ID = os.environ["GENESYSCLOUD_OAUTHCLIENT_ID"]
+CLIENT_SECRET = os.environ["GENESYSCLOUD_OAUTHCLIENT_SECRET"]
+# CLIENT_REGION = os.environ["GENESYSCLOUD_REGION"]
+# CLIENT_API_REGION = os.environ["GENESYSCLOUD_API_REGION"]
 
-api_instance = PureCloudPlatformClientV2.UsersApi(apiClient);
+# PureCloudPlatformClientV2.configuration.host = 	CLIENT_API_REGION
+apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token(CLIENT_ID, CLIENT_SECRET)
+routingApi = PureCloudPlatformClientV2.RoutingApi(apiClient)
+integrationsApi = PureCloudPlatformClientV2.IntegrationsApi(apiClient)
+
+
+# apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token('682b4a94-5e61-4219-b399-e52764c8da30','9c7Op9xuqC2NXlgUfXywP5YyClYzEbhu_FChShRQOtY')
+
+# api_instance = PureCloudPlatformClientV2.UsersApi(apiClient);
 
 page_size = 25 # int | Page size (optional) (default to 25)
 page_number = 1 # int | Page number (optional) (default to 1)
