@@ -94,8 +94,8 @@ def checkFlows():
 #adding check
 checkQueues()
 checkUsers()
-checkDidPools()
 checkIVRs()
+checkDidPools()
 checkFlows()
 
 
