@@ -40,7 +40,7 @@ integrationsApi = PureCloudPlatformClientV2.IntegrationsApi(apiClient)
 
 def findQueue(queueName):
   results = routingApi.get_routing_queues(name=queueName)
-  print(result)
+  print(results)
   if len(results.entities)==1:
     return results.entities[0]
   else: 
