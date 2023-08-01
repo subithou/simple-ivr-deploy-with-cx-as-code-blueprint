@@ -13,9 +13,6 @@ provider "genesyscloud" {
 }
 
 
-
-
-
 resource "genesyscloud_user" "sf_johnsmith" {
   email           = "john.smith@simplefinancial.com"
   name            = "John Smith"
@@ -121,9 +118,6 @@ resource "genesyscloud_telephony_providers_edges_did_pool" "mygcv_number" {
 
 
 
-
-
-
 resource "genesyscloud_architect_ivr" "mysimple_ivr" {
   name               = "A simple IVR"
   description        = "A sample IVR configuration"
@@ -136,11 +130,9 @@ resource "genesyscloud_architect_ivr" "mysimple_ivr" {
 }
 
 
-resource "genesyscloud_tf_export" "export" {
-  directory          = "./genesyscloud_export_data"
-  resource_types     = ["genesyscloud_user"]
-  include_state_file = true
-}
+
+
+
 
 
 

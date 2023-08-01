@@ -1,4 +1,10 @@
-resource "genesyscloud_flow" "mysimpleflow3" {
-  filepath = "./Closed Hours6.yaml"
-  file_content_hash = filesha256("./Closed Hours6.yaml") 
+
+
+
+
+resource "genesyscloud_tf_export" "export" {
+  directory          = "./genesyscloud_export_data"
+  resource_types     = ["genesyscloud_user"]
+  include_state_file = true
+  export_as_hcl = true
 }
