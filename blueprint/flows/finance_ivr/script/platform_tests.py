@@ -40,7 +40,7 @@ integrationsApi = PureCloudPlatformClientV2.IntegrationsApi(apiClient)
 
 def findQueue(queueName):
   results = routingApi.get_routing_queues(name=queueName)
-
+  print(result)
   if len(results.entities)==1:
     return results.entities[0]
   else: 
@@ -55,8 +55,8 @@ def findIntegrationAction(actionName):
     return None    
 
 def checkQueues():
-  Simple_Financial_IRA_queue = findQueue("Simple Financial IRA queue")
-  Simple_Financial_401K_queue = findQueue("Simple Financial 401K queue") 
+  Simple_Financial_IRA_queue = findQueue("Prior Return1")
+  # Simple_Financial_401K_queue = findQueue("Simple Financial 401K queue") 
 
   
   assert not(Simple_Financial_IRA_queue is None)
