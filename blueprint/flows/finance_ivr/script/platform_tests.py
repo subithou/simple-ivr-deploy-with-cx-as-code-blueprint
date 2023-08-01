@@ -4,15 +4,15 @@ import os
 import time
 import PureCloudPlatformClientV2
 
-CLIENT_ID = os.environ["GENESYSCLOUD_OAUTHCLIENT_ID"]
-CLIENT_SECRET = os.environ["GENESYSCLOUD_OAUTHCLIENT_SECRET"]
+# CLIENT_ID = os.environ["GENESYSCLOUD_OAUTHCLIENT_ID"]
+# CLIENT_SECRET = os.environ["GENESYSCLOUD_OAUTHCLIENT_SECRET"]
 
 # CLIENT_REGION = os.environ["GENESYSCLOUD_REGION"]
 # CLIENT_API_REGION = os.environ["GENESYSCLOUD_API_REGION"]
 
 # PureCloudPlatformClientV2.configuration.host = 	CLIENT_API_REGION
-apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token(CLIENT_ID, CLIENT_SECRET)
-# apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token('94a34097-24d0-4ba9-b6aa-66afa52870c1', 'Vy62YXuW8NFM8bMxeVhDR5dzgv_XOiad2_nu2PPkC5Q')
+# apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token(CLIENT_ID, CLIENT_SECRET)
+apiClient = PureCloudPlatformClientV2.api_client.ApiClient().get_client_credentials_token('94a34097-24d0-4ba9-b6aa-66afa52870c1', 'Vy62YXuW8NFM8bMxeVhDR5dzgv_XOiad2_nu2PPkC5Q')
 
 
 routingApi = PureCloudPlatformClientV2.RoutingApi(apiClient)
@@ -33,7 +33,7 @@ def findQueue(queueName):
     return None
 
 def findUser(userName):
-  results = userApi.get_users(state=state, page_size=1000)
+  results = userApi.get_users(state='active', page_size=1000)
   for i in results.entities:
     if i.name == userName:
       userApi.delete_user(i.id)
@@ -42,10 +42,13 @@ def findUser(userName):
 
 def findDidPool(description):
   results = didPoolApi.get_telephony_providers_edges_didpools(page_size=1000)
+  # print(results)
+  # for i in results.entities:
+  #   print(i.description)
   for i in results.entities:
    if i.description == description:
       didPoolApi.delete_telephony_providers_edges_didpool(i.id)
-      print('Deleted DID pool - ',description)
+      print('Deleted DID pool - ')
 
 
 def findIntegrationAction(actionName):
@@ -57,9 +60,9 @@ def findIntegrationAction(actionName):
     return None    
 
 def findIVR(IvrName):
-  results = routingApi.get_architect_ivrs(name=IvrName)
+  results = flowApi.get_architect_ivrs(name=IvrName)
   if len(results.entities)==1:
-    routingApi.delete_architect_ivr(results.entities[0].id)
+    flowApi.delete_architect_ivr(results.entities[0].id)
     print('deleted', IvrName)
 
 
