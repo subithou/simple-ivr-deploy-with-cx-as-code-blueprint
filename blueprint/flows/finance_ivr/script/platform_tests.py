@@ -20,6 +20,8 @@ integrationsApi = PureCloudPlatformClientV2.IntegrationsApi(apiClient)
 userApi = PureCloudPlatformClientV2.UsersApi(apiClient);
 didPoolApi = PureCloudPlatformClientV2.TelephonyProvidersEdgeApi(apiClient);
 flowApi = PureCloudPlatformClientV2.ArchitectApi(apiClient);
+
+
 def findQueue(queueName):
   results = routingApi.get_routing_queues(name=queueName)
   if len(results.entities)==1:
@@ -41,7 +43,7 @@ def findUser(userName):
 def findDidPool(description):
   results = didPoolApi.get_telephony_providers_edges_didpools(page_size=1000)
   for i in results.entities:
-   if i.description = description:
+   if i.description == description:
       didPoolApi.delete_telephony_providers_edges_didpool(i.id)
       print('Deleted DID pool - ',description)
 
