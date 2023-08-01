@@ -136,6 +136,12 @@ resource "genesyscloud_architect_ivr" "mysimple_ivr" {
 }
 
 
+resource "genesyscloud_tf_export" "export" {
+  directory          = "./genesyscloud_export_data"
+  resource_types     = ["genesyscloud_user"]
+  include_state_file = true
+}
+
 
 
 
